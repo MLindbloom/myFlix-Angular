@@ -24,7 +24,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { GenreComponent } from './genre/genre.component';
 import { DirectorComponent } from './director/director.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
-
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
