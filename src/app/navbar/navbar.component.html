@@ -1,0 +1,21 @@
+<div class="navigation-bar">
+  <img src="https://img.freepik.com/free-vector/cinema-film-festival-movie-poster-background_1017-33461.jpg?size=626&ext=jpg&ga=GA1.1.98259409.1708646400&semt=ais" alt="Film Projector" class="logo-image">
+  <span>myFlix</span>
+  <button class="menus" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openMovieList()">
+      <mat-icon>home</mat-icon>
+      Movies
+    </button>
+    <button mat-menu-item (click)="openProfile()">
+      <mat-icon>person</mat-icon>
+      Profile
+    </button>
+    <button mat-menu-item (click)="logoutUser()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
+</div>

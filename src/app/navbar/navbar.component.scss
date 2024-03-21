@@ -1,0 +1,21 @@
+.navigation-bar {
+  background-color: #ffc659;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.logo-image {
+  width: 80px;
+  height: auto;
+}
+
+.navigation-bar span {
+  margin-left: 20px;
+  font-size: 25px;
+}
+
+.navigation-bar .menus {
+  margin-left: auto; /* Push the menu button to the right */
+}

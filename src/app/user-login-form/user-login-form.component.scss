@@ -1,0 +1,30 @@
+mat-card-header {
+  display: flex;
+  justify-content: center; // Center items horizontally
+  align-items: center; // Center items vertically
+
+  mat-card-title {
+    font-size: 25px;
+    font-weight: 500;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  width: 100%;
+}
+.signup-btn {
+  margin: 20px auto;
+  padding: 1.5rem;
+  font-size: 18px;
+  background-color: #6cabdd;
+  color: #e8f7ee;
+  width: 90%;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center; // Center items horizontally
+}
