@@ -1,126 +1,121 @@
-.movie-page {
+.profile-container {
   background-color: #6cabdd;
   position: relative;
   display: grid;
-  max-width: 100vw;
-  margin: 0.5rem auto;
+  min-height: 100vh; /* Set minimum height to fill the viewport */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
   padding: 2rem;
-  row-gap: 1.5em;
   color: black;
   font-weight: bold;
   text-align: center;
   border: 1px solid rgb(230, 218, 218);
-}
-.info {
-  font-size: 25px;
-}
-.movie-view {
-  position: relative;
-  display: grid;
-  max-width: 100vw;
-  margin: 0.5rem auto;
-  padding: 2rem;
-  row-gap: 1.65em;
-  color: black;
-  font-weight: bold;
-}
 
-.profile {
-  position: relative;
-  display: grid;
-  max-width: 100vw;
-  margin: 0.5rem auto;
-  padding: 2rem;
-  row-gap: 1.65em;
-  color: black;
-  font-weight: bold;
-  text-align: center;
-  border: black;
-  background-color: #bee2ff;
-}
+  .profile-card-header {
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+  }
 
-.profile-title {
-  font-size: 24px;
-  padding: 20px;
-  border-bottom: 1px solid #ccc;
-}
+  .edit-userdata-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 
-.profile-actions {
-  padding: 20px;
-  border-top: 1px solid #ccc;
-}
+  .form-inputs {
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
 
-h2 {
-  text-align: center;
-  font-weight: bold;
-}
-.movie-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  margin: 20px;
-  grid-gap: 2rem;
-}
+  .actions {
+    // Styles for actions
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 
-.movie-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgb(230, 223, 223);
-  margin-top: 5px;
-  width: 50vw;
-  justify-self: center;
-  justify-content: center;
-  padding: 5px;
-}
+    .button-profile {
+      margin: 0 10px;
+    }
+  }
 
-.movie-title {
-  flex: 1;
-}
-
-.movie-image {
-  flex: 4;
-  object-fit: contain;
-  max-width: 100%;
-  margin-bottom: 20px;
-}
-
-.movie-info {
-  flex: 1;
-}
-
-@media screen and (min-width: 250px) {
   .movie-view {
-    grid-template-columns: 1fr;
-  }
+    // Styles for movie-view
+    position: relative;
+    display: grid;
+    max-width: 100vw;
+    margin: 0.5rem auto;
+    padding: 2rem;
+    row-gap: 1.65em;
+    color: black;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(250px, 1fr)
+    ); /* Adjust column width as needed */
+    gap: 20px; /* Add gap between movie cards */
 
-  .movie-card {
-    width: 80vw;
-  }
-}
+    .movie-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgb(230, 223, 223);
+      margin-top: 10px; /* Add margin to create space between cards */
+      width: 50vw;
+      justify-self: center;
+      padding: 5px;
+      margin-bottom: 20px;
+      box-shadow: 0px 8px 16px, rgb(0, 0, 0.3);
+    }
 
-@media screen and (min-width: 500px) {
-  .movie-view {
-    grid-template-columns: 1fr 1fr;
-  }
+    .movie-title {
+      flex: 1;
+    }
 
-  .movie-card {
-    width: 45vw;
-  }
-}
+    .movie-image {
+      flex: 4;
+      object-fit: contain;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
 
-@media screen and (min-width: 750px) {
-  .movie-view {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+    .movie-info {
+      flex: 1;
+    }
 
-@media screen and (min-width: 1000px) {
-  .movie-view {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
+    @media screen and (min-width: 250px) {
+      // Media queries for movie-view
+      grid-template-columns: 1fr;
 
-  .movie-card {
-    width: 20vw;
+      .movie-card {
+        width: 80vw;
+      }
+    }
+
+    @media screen and (min-width: 500px) {
+      grid-template-columns: 1fr 1fr;
+
+      .movie-card {
+        width: 45vw;
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media screen and (min-width: 1000px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+
+      .movie-card {
+        width: 20vw;
+      }
+    }
   }
 }

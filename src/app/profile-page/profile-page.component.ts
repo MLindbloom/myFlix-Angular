@@ -14,7 +14,7 @@ import { MovieDetailsComponent } from '../movie-details/movie-details.component'
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePageComponent implements OnInit {
-  user: any = { Username: '', Password: '', Email: '', Birth: '' };
+  user: any = { Username: '', Password: '', Email: '', Birthday: '' };
 
   FavoriteMovies: any[] = [];
   movies: any[] = [];
@@ -45,19 +45,22 @@ export class ProfilePageComponent implements OnInit {
     this.router.navigate(['movies']);
   }
 
-  public updateUser(): void {
-    this.dialog.open(UserRegistrationFormComponent, {
-      width: '450px',
-      height: '450px',
-      data: {
-        title: 'UPDATE USER',
-        button: 'Update',
-        function: 'updateUser()',
+  updateUser(): void {
+    this.fetchApiData.updateUser(this.user).subscribe({
+      next: (result) => {
+        console.log('User update success:', result);
+        localStorage.setItem('user', JSON.stringify(result));
+        this.snackBar.open('User update successful', 'OK', {
+          duration: 2000,
+        });
+      },
+      error: (error) => {
+        console.error('Error updating user:', error);
+        this.snackBar.open('Failed to update user', 'OK', {
+          duration: 2000,
+        });
       },
     });
-    this.fetchApiData.currentUser.subscribe(
-      (userData) => (this.user = userData)
-    );
   }
 
   deleteUser(): void {
