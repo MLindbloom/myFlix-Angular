@@ -7,6 +7,12 @@ import { GenreComponent } from '../genre/genre.component';
 import { DirectorComponent } from '../director/director.component';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 
+/**
+ * @description Component for the Movie Card.
+ * @selector 'app-movie-card'
+ * @templateUrl './movie-card.component.html'
+ * @styleUrls ['./movie-card.component.scss']
+ */
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -18,6 +24,13 @@ export class MovieCardComponent implements OnInit {
 
   user = JSON.parse(localStorage.getItem('user') || '');
 
+  /**
+   * @constructor - Constructor for MovieCardComponent.
+   * @param {FetchApiDataService} fetchApiData - Fetchs data from the API.
+   * @param {Router} router Router service for navigation.
+   * @param {MatDialog} dialog - Material dialog service for opening dialogs.
+   * @param {MatSnackBar} snackBar - Material SnackBar service for displaying notifications.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public router: Router,
@@ -29,6 +42,10 @@ export class MovieCardComponent implements OnInit {
     this.getAllMovies();
   }
 
+  /**
+   * @description Function for getting all movies.
+   * @returns All movies.
+   */
   getAllMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -37,6 +54,10 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * @description Function for getting Favorite Movie list.
+   * @returns Favorite Movie list
+   * */
   getFavorites(): void {
     this.fetchApiData.getOneUser().subscribe(
       (resp: any) => {
@@ -53,11 +74,21 @@ export class MovieCardComponent implements OnInit {
     );
   }
 
+  /**
+   * @description Function to check if movie is in Favorite Movie list
+   * @param {string} movieID - ID of the movie checked
+   * @returns boolean
+   * */
   isFavoriteMovie(movieID: string): boolean {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user.FavoriteMovies.indexOf(movieID) >= 0;
   }
 
+  /**
+   * @description Function to add a movie to the Favorite Movies list
+   * @param {string} id - Movie id
+   * @returns Message 'Movie added to favorites'
+   * */
   public addToFavorites(id: string): void {
     if (this.isFavoriteMovie(id)) {
       this.removeFavoriteMovie(id);
@@ -71,6 +102,11 @@ export class MovieCardComponent implements OnInit {
     }
   }
 
+  /**
+   * @description Function to remove a movie from the Favorite Movies list
+   * @param {string} id - Movie id
+   * @returns Message 'Removed from favorites'
+   */
   public removeFavoriteMovie(id: string): void {
     this.fetchApiData.deleteFavoriteMovie(id).subscribe(() => {
       this.snackBar.open('Removed from favorites', 'OK', {
@@ -79,6 +115,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * @description Function to open Genre information from GenreComponent
+   * @param genre - Movie genre
+   * @returns Genre name and description
+   * */
   public getGenre(genre: any) {
     this.dialog.open(GenreComponent, {
       width: '500px',
@@ -87,6 +128,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * @description Function to open Director information from DirectorComponent
+   * @param director - Movie director name
+   * @returns Director name and description
+   * */
   public getOneDirector(director: any) {
     this.dialog.open(DirectorComponent, {
       width: '500px',
@@ -95,6 +141,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * @description Function to open Movie Synopsis from MovieDetailsComponent
+   * @param {string} details - Movie synopsis
+   * @returns Movie title and synopsis
+   * */
   public openMovieDetails(details: string) {
     this.dialog.open(MovieDetailsComponent, {
       width: '500px',
